@@ -23,9 +23,9 @@ class Uporabnik:
     def __repr__(self):
         return self.ime + " " + self.priimek
 
-    def preveri_ujemanje_prijave(self, email):
+    def preveri_ujemanje_prijave(self, email, geslo):
         """ Vrne logično vrednost, ki pove, če vstavljeno geslo in email ustrezata tej osebi. """
-        return self.email == email
+        return self.email == email and geslo == self.geslo
 
 
 class Slika:
