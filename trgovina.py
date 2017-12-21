@@ -2,7 +2,7 @@
 
 class StanjeAplikacije:
     """ Se obnaša podobno kot enum v drugih jezikih - z pomočjo tega razreda nastavimo 
-    stanje na eno izmed možnih vrednost, brez da bi si morali zapolniti, katere nize
+    stanje na eno izmed možnih vrednosti, brez da bi si morali zapomniti, katere nize
     smo uporabili za katero stanje. Po potrebi lahko stanja dodajama. """
 
     Domov = 1 # gumb Home - to bo privzeta vrednost
