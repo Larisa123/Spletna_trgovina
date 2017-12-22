@@ -1,5 +1,8 @@
 # Aplikacija za spletno trgovino
 
+import modeli # delo z bazo
+
+
 class StanjeAplikacije:
     """ Se obnaša podobno kot enum v drugih jezikih - z pomočjo tega razreda nastavimo 
     stanje na eno izmed možnih vrednosti, brez da bi si morali zapomniti, katere nize
@@ -10,31 +13,6 @@ class StanjeAplikacije:
     Trgovina = 3 # gumb Store
     Kosarica = 4 # gumb Basket - do tega lahko dostopamo samo v trgovini
     Racun = 5 # ko zaključimo nakup, se nam prikaže nova stran, na kateri je račun nakupa
-
-
-class Uporabnik:
-    def __init__(self, id_, ime, priimek, email, geslo):
-        self.id_ = id_ # id je vgrajeno ime in ne gre..
-        self.ime = ime
-        self.priimek = priimek
-        self.email = email
-        self.geslo = geslo
-
-    def __repr__(self):
-        return self.ime + " " + self.priimek
-
-    def preveri_ujemanje_prijave(self, email, geslo):
-        """ Vrne logično vrednost, ki pove, če vstavljeno geslo in email ustrezata tej osebi. """
-        return self.email == email and geslo == self.geslo
-
-
-class Slika:
-    def __init__(self, id_, dosegljivost, naslov, vrsta, cena):
-        self.id_ = id_
-        self.dosegljivost = True
-        self.naslov = naslov
-        self.vrsta = vrsta
-        self.cena = cena
 
 
 class Trgovina:
@@ -63,12 +41,15 @@ class Trgovina:
     # Metode za prikazovanje ustreznih strani:
 
     def prikaziMenuDomov(self):
+        """ Morema napisati html """
         pass
 
     def prikaziMenuOpis(self):
+        """ Morema napisati html """
         pass
 
     def prikaziMenuTrgovina(self):
+        """ Morema napisati html """
         pass
 
     def prikaziKosarico(self):
@@ -98,3 +79,15 @@ class Trgovina:
 
 
 Trgovina()
+
+# Igranje z bazo:
+
+#modeli.dodajUporabnika("Larisa", "Carli", "lara.carli@gmail.com", "1234")
+#modeli.dodajUporabnika("Anja", "Trop", "anya.trop@gmail.com", "4321")
+#print(modeli.uporabniki())
+#modeli.dodajSliko("Morje", "oljna slika", 150)
+#modeli.dodajSliko("Haloze", "pastelna slika", 120) # naslov bi lahko nastavili unique
+
+modeli.prijavaUporabnika("lara.carli@gmail.com", "1234")
+modeli.prijavaUporabnika("lara.carli@gmail.com", "1232")
+modeli.prijavaUporabnika("la.carli@gmail.com", "1234")
