@@ -1,4 +1,5 @@
 import sqlite3
+import datetime
 import csv
 
 baza = "spletna_trgovina.db"
@@ -13,10 +14,11 @@ def dodajUporabnika(ime, priimek, email, geslo):
                VALUES (?,?,?,?)
                """, (ime, priimek, email, geslo))
         print("Uspešno dodan uporabnik: " + ime + " " + priimek)
+
+        conn.commit()
     except:
         print("Uporabnik z email naslovom " + email + " je že vnešen.")
 
-    conn.commit()
 
 def dodajSliko(naslov, vrsta, cena):
     try:
@@ -26,10 +28,11 @@ def dodajSliko(naslov, vrsta, cena):
                VALUES (?,?,?,?)
                """, (dosegljivost, naslov, vrsta, cena))
         print("Uspešno dodana slika: " + naslov)
+
+        conn.commit()
     except:
         print("Slika z naslovom " + naslov + " je že vnešena.")
 
-    conn.commit()
 
 def prijavaUporabnika(email, geslo):
     try:
@@ -42,16 +45,29 @@ def prijavaUporabnika(email, geslo):
             print("Prijava uporabnika z naslovom " + email + " uspešna.")
             return True
 
+        conn.commit()
+
         print("Geslo uporabnika: " + email + " ni pravilno.")
     except:
         print("Uporabnik z email naslovom " + email + " še ni registriran.")
 
-    conn.commit()
 
 def uporabniki():
     cur.execute("""
         SELECT * FROM UPORABNIK
         """)
     return cur.fetchall()
+
+def dodajSlikoVKosarico(uporabnik_id, slika_id):
+    try:
+        datum_vstavljanja = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        cur.execute("""
+               INSERT INTO KOSARICA (uporabnik_id, slika_id, datum_vstavljanja)
+               VALUES (?,?,?)
+               """, (uporabnik_id, slika_id, datum_vstavljanja))
+        print("Uspešno dodana slika: " + str(slika_id) + " v košarico uporabnika " + str(uporabnik_id))
+        conn.commit()
+    except:
+        print("Vnos slike v košarico ni bil uspešen.")
 
 
