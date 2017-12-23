@@ -76,9 +76,13 @@ class Trgovina:
         """ Nastavimo datum nakupa in vrednost. Slikam nakupa nastavimo dosegljivost na false. """
         pass
 
+    def izpisiVsePodatkeTabele(self, tabela):
+        for vrstica in tabela:
+            print(vrstica)
 
 
-Trgovina()
+
+trgovina = Trgovina()
 
 # Igranje z bazo:
 
@@ -91,4 +95,10 @@ Trgovina()
 modeli.prijavaUporabnika("lara.carli@gmail.com", "1234")
 modeli.prijavaUporabnika("lara.carli@gmail.com", "1232")
 modeli.prijavaUporabnika("la.carli@gmail.com", "1234")
-modeli.dodajSlikoVKosarico(1, 2)
+print()
+#modeli.dodajSlikoVKosarico(2, 2)
+modeli.dodajSliko("Spanija2", "oljna slika", 150)
+modeli.dodajSliko("Spanija3", "oljna slika", 150)
+
+modeli.dodajSlikoVKosarico(2, 3)
+trgovina.izpisiVsePodatkeTabele(modeli.prikaziKosarico())
