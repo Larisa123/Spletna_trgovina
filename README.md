@@ -4,7 +4,7 @@ Projekt pri Podatkovnih bazah
 Spletna trgovina za prodajo umetniških slik, narejena v sklopu predmeta Podatkovne baze.
 
 
-## Relacijski diagram (potrebni so popravki):
+## Relacijski diagram:
 
 ![diagram_spletna_trgovina](https://user-images.githubusercontent.com/13337783/34355370-fe076456-ea34-11e7-9b33-a6e5c84331f2.jpg)
 
