@@ -1,6 +1,7 @@
 # Aplikacija za spletno trgovino
 
 import modeli # delo z bazo
+from bottle import *
 
 
 class StanjeAplikacije:
@@ -64,33 +65,21 @@ class Trgovina:
 
     # Pomožne metode:
 
-    def dodajVKosarico(self, slika):
-        """ Dodamo izbrano sliko v uporabnikovo košarico. Shranimo datum vstavljanja. """
-        pass
-
-    def odstraniIzKosarice(self, slika):
-        """ Odstranimo izbrano sliko iz uporabnikove košarice. Shranimo datum odstranitve. """
-        pass
-
-    def pretvoriKosaricoVNakup(self):
-        """ Nastavimo datum nakupa in vrednost. Slikam nakupa nastavimo dosegljivost na false. """
-        pass
-
     def izpisiVsePodatkeTabele(self, tabela):
+        print()
         for vrstica in tabela:
             print(vrstica)
-
 
 
 trgovina = Trgovina()
 
 # Igranje z bazo:
 
-#modeli.dodajUporabnika("Larisa", "Carli", "lara.carli@gmail.com", "1234")
-#modeli.dodajUporabnika("Anja", "Trop", "anya.trop@gmail.com", "4321")
-#print(modeli.uporabniki())
-#modeli.dodajSliko("Morje", "oljna slika", 150)
-#modeli.dodajSliko("Haloze", "pastelna slika", 120) # naslov bi lahko nastavili unique
+modeli.dodajUporabnika("Larisa", "Carli", "lara.carli@gmail.com", "1234")
+modeli.dodajUporabnika("Anja", "Trop", "anya.trop@gmail.com", "4321")
+print(modeli.uporabniki())
+modeli.dodajSliko("Morje", "oljna slika", 150)
+modeli.dodajSliko("Haloze", "pastelna slika", 120) # naslov bi lahko nastavili unique
 
 modeli.prijavaUporabnika("lara.carli@gmail.com", "1234")
 modeli.prijavaUporabnika("lara.carli@gmail.com", "1232")
@@ -100,5 +89,13 @@ print()
 modeli.dodajSliko("Spanija2", "oljna slika", 150)
 modeli.dodajSliko("Spanija3", "oljna slika", 150)
 
-modeli.dodajSlikoVKosarico(2, 3)
+modeli.dodajSlikoVKosarico(uporabnik_id=2, slika_id=3)
+modeli.odstraniSlikoIzKosarice(uporabnik_id=1, slika_id=2, nakup=False)
+modeli.dodajSlikoVKosarico(uporabnik_id=1, slika_id=2)
 trgovina.izpisiVsePodatkeTabele(modeli.prikaziKosarico())
+trgovina.izpisiVsePodatkeTabele(modeli.prikaziKosarico(uporabnik_id=1))
+
+modeli.pretvoriKosaricoVNakup(1)
+#trgovina.izpisiVsePodatkeTabele()
+trgovina.izpisiVsePodatkeTabele(modeli.prikaziKosarico(uporabnik_id=1))
+
