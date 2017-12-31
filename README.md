@@ -1,3 +1,8 @@
+
+# OPOMBA: Repozitorij sva prestavile: https://github.com/Larisa123/Spletna_trgovina_slik.
+
+
+
 # Spletna_trgovina
 Projekt pri Podatkovnih bazah 
 
